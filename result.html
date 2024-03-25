@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sentiment Analysis Results</title>
+    <style>
+     body {
+    font-family: Arial, sans-serif;
+    background: #fff; /* Dark background color */
+    color: #fff; /* Text color */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+        
+        .container {
+            max-width: 500px;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+            background-color: #333; /* Dark container background color */
+            text-align: center; /* Center align the content */
+        }
+        
+        h1 {
+    font-size: 36px;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); /* Text shadow for a radium effect */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #fff; /* Change background color to white */
+    color: #333; /* Text color */
+    padding: 10px 0; /* Add padding to the header */
+    text-align: center; /* Center align the text */
+    z-index: 999; /* Ensure the header is above other content */
+    white-space: nowrap; /* Prevent wrapping of text */
+}
+
+
+@keyframes marquee {
+    0% {
+        transform: translateX(35%);
+    }
+    100% {
+        transform: translateX(-35%);
+    }
+}
+    p {
+            font-size: 28px;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        
+        a {
+            color: #fff; /* Link color */
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        a:hover {
+            color: #ff4b2b; /* Hover color */
+        }
+
+        @keyframes marquee {
+            0% {
+                transform: translateX(35%);
+            }
+            100% {
+                transform: translateX(-35%);
+            }
+        }
+        #sentimentEmoji {
+            font-size: 68px; /* Adjust the font size to increase the emoji size */
+        }
+
+
+
+    </style>
+</head>
+<body>
+    <h1>Sentiment Analysis Results</h1>
+    <div class="container">
+        <p>Your review: {{ review }}</p>
+        <p>Sentiment: {{ sentiment }} </p>
+        <p id="sentimentEmoji"></p>
+        <p><a href="/">Go back</a></p>
+    </div>
+    <script>
+        // JavaScript code to dynamically update the emoji based on sentiment
+        var sentimentResult = "{{ sentiment }}"; // Get the sentiment result from your backend
+        
+        // Get the element where the emoji will be displayed
+        var emojiElement = document.getElementById("sentimentEmoji");
+        
+        // Update the emoji based on the sentiment result
+        if (sentimentResult === "Positive") {
+            emojiElement.textContent = positiveEmoji;
+        } else if (sentimentResult === "Negative") {
+            emojiElement.textContent = negativeEmoji;
+        }
+    </script>
+</body>
+</html>
